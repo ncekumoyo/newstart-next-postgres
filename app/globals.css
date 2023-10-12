@@ -1,0 +1,66 @@
+@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import "../node_modules//@fortawesome/fontawesome-free/css/all.min.css";
+
+@font-face {
+  font-family: Quicksand;
+  src: url(../assets/fonts/Quicksand-VariableFont_wght.ttf);
+}
+
+:root {
+  --success: rgb(120, 183, 120);
+}
+
+html,
+body {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: Quicksand;
+  max-width: 100vw;
+  overflow-x: hidden;
+  background-image: url("../assets/images/Background.png");
+  background-color: green;
+  background-repeat: repeat;
+  background-size: 70%;
+}
+
+.landing {
+  background-image: url("../assets/images/freshfood.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.input-control:focus,
+form-check-input,
+form-check-input:active,
+form-check-input:focus,
+textarea {
+  background-color: #fff !important;
+  border-color: transparent !important;
+  outline: none !important;
+  box-shadow: none;
+}
+
+.form-check-input {
+  width: 30px;
+  height: 30px;
+}
+
+th,
+td {
+  vertical-align: top;
+}
+
+.bg-light {
+  background-color: #f5f8f5 !important;
+}
+
+/* .bg-success {
+  background-color: var(--success) !important;
+} */

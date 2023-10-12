@@ -1,0 +1,85 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id Int @id @default(autoincrement())
+  email String @unique
+  password String
+  type String 
+  verified Boolean @default(true)
+  profId Int @unique
+  profile Profile @relation("UserProfile", fields: [profId], references: [id])
+  orgId Int?
+  org User? @relation("ClerkOrg", fields: [orgId], references: [id])
+  orgProfiles Profile[] @relation("ProfileOrg")
+  programs Program[]
+  clerks User[] @relation("ClerkOrg")
+}
+
+model Profile {
+  id Int @id @default(autoincrement())
+  forenames String? 
+  lastname String?
+  orgName String?
+  address String?
+  phone String?
+  dob DateTime?
+  gender String?
+  height Float?
+  weight Float?
+  waist Float?
+  activities Activity[]
+  user User? @relation("UserProfile")
+  orgId Int?
+  organization User? @relation("ProfileOrg", fields:[orgId], references: [id])
+}
+
+model Assessment {
+  id Int @id @default(autoincrement())
+  title String
+  description String
+  image String?
+  questions String?
+  key String?
+  activities Activity[]
+}
+
+model Program {
+  id Int @id @default(autoincrement())
+  orgId Int
+  organization User @relation(fields: [orgId], references: [id])
+  title String
+  activities Activity[]
+  @@unique([orgId, title])
+}
+
+model Activity {
+  id Int @id @default(autoincrement())
+  progId Int
+  program Program @relation(fields:[progId], references: [id])
+  profId Int 
+  profile Profile @relation(fields: [profId], references: [id])
+  assId Int
+  assessment Assessment @relation(fields: [assId], references: [id])
+  answers String?
+  results String?
+  recommendations String?
+  completed Boolean @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Otp {
+  id Int @id @default(autoincrement())
+  email String @unique
+  otp String
+}
