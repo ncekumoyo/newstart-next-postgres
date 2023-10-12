@@ -1,9 +1,12 @@
 import React from "react";
-import { prisma } from "@/prisma/client";
+
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import { NextResponse } from "next/server";
 import otpGenerator from "otp-generator";
+import { PrismaClient } from "@prisma/client";
+import { NextResponse } from "next/server";
+
+const prisma = new PrismaClient();
 
 export async function POST(req) {
   try {
