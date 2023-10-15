@@ -13,8 +13,8 @@ function ProfilesView({ orgId, profs }) {
               New Profile
             </Link>
           </div>
-          {profs.error && <div className="bg-danger p-5 text-center text-light fw-bold">{profs.error}</div>}
-          {profs.data ? (
+          {profs?.error && <div className="bg-danger p-5 text-center text-light fw-bold">{profs?.error}</div>}
+          {profs?.data ? (
             <table className="table table-sm table-striped">
               <thead>
                 <tr>
@@ -25,7 +25,7 @@ function ProfilesView({ orgId, profs }) {
                 </tr>
               </thead>
               <tbody>
-                {profs.data?.map((p) => (
+                {profs?.data?.map((p) => (
                   <tr key={p.id}>
                     <td className="px-2">{p.forenames}</td>
                     <td className="px-2">{p.lastname}</td>
