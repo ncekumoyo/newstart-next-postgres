@@ -24,7 +24,7 @@ const ProgramsByOrgPage = async ({ params }) => {
               </tr>
             </thead>
             <tbody>
-              {programs.data.map((p) => (
+              {programs?.data?.map((p) => (
                 <tr key={p.id}>
                   <td>{p.title}</td>
                   <td>
